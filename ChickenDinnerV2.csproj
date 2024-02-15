@@ -125,6 +125,8 @@
     <Compile Include="Modules\InfiniteRadio\Plugins\Items\Radio.cs" />
     <Compile Include="Modules\DoNotTriggerTesla\Config.cs" />
     <Compile Include="Modules\DoNotTriggerTesla\Events\Player\PreventTriggeringTesla.cs" />
+    <Compile Include="Modules\ObserversCounter\Config.cs" />
+    <Compile Include="Modules\ObserversCounter\Plugins\Scp173\TeleportAbility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
