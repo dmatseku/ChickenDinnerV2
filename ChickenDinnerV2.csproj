@@ -109,6 +109,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Interfaces\IInitialize.cs" />
+    <Compile Include="Core\Interfaces\IModuleConfig.cs" />
+    <Compile Include="Core\Interfaces\IObserver.cs" />
+    <Compile Include="Core\Main.cs" />
+    <Compile Include="Core\ObserverManager.cs" />
+    <Compile Include="Core\Tools\ILBuilder.cs" />
+    <Compile Include="Modules\ConfigRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
