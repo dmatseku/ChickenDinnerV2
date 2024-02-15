@@ -116,6 +116,8 @@
     <Compile Include="Core\ObserverManager.cs" />
     <Compile Include="Core\Tools\ILBuilder.cs" />
     <Compile Include="Modules\ConfigRegistration.cs" />
+    <Compile Include="Modules\ForbidToOpenLockedDoors\Config.cs" />
+    <Compile Include="Modules\ForbidToOpenLockedDoors\Plugins\Player\ForbidOpening.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
