@@ -1,6 +1,7 @@
 ﻿using Exiled.API.Interfaces;
 using DistanceModificationConfig = ChickenDinnerV2.Modules.DistanceModification.Config;
 using AtmosphericStartConfig = ChickenDinnerV2.Modules.AtmosphericStart.Config;
+using InfiniteRadioConfig = ChickenDinnerV2.Modules.InfiniteRadio.Config;
 
 namespace ChickenDinnerV2.Modules
 {
@@ -12,5 +13,7 @@ namespace ChickenDinnerV2.Modules
         public DistanceModificationConfig DistanceModification { get; set; } = new DistanceModificationConfig();
         
         public AtmosphericStartConfig AtmosphericStart { get; set; } = new AtmosphericStartConfig();
+        
+        public InfiniteRadioConfig InfiniteRadio {  get; set; } = new InfiniteRadioConfig();
     }
 }

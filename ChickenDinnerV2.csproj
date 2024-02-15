@@ -121,6 +121,8 @@
     <Compile Include="Modules\ConfigRegistration.cs" />
     <Compile Include="Modules\DistanceModification\Config.cs" />
     <Compile Include="Modules\DistanceModification\Plugins\Scp173.cs" />
+    <Compile Include="Modules\InfiniteRadio\Config.cs" />
+    <Compile Include="Modules\InfiniteRadio\Plugins\Items\Radio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
