@@ -116,6 +116,11 @@
     <Compile Include="Core\ObserverManager.cs" />
     <Compile Include="Core\Tools\ILBuilder.cs" />
     <Compile Include="Modules\ConfigRegistration.cs" />
+    <Compile Include="Modules\Volkodav\Commands\BanPlayer.cs" />
+    <Compile Include="Modules\Volkodav\Commands\UnbanPlayer.cs" />
+    <Compile Include="Modules\Volkodav\Config.cs" />
+    <Compile Include="Modules\Volkodav\Events\BanEverywhere.cs" />
+    <Compile Include="Modules\Volkodav\Model\BanManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
