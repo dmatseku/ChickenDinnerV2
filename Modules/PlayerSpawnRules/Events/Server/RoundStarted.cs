@@ -2,11 +2,10 @@
 using ChickenDinnerV2.Core.Interfaces;
 using ChickenDinnerV2.Modules.PlayerSpawnRules.Model;
 using Exiled.API.Features;
-using Exiled.Events.Handlers;
 
 namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Events.Server
 {
-    internal class RoundStarted
+    internal class RoundStarted : IObserver
     {
         protected static Config PlayerSpawnRulesConfig = Main.Instance.Config.PlayerSpawnRules;
 
@@ -27,7 +26,6 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Events.Server
 
         public void ApplySpawnOrder()
         {
-            Log.Warn("hello");
             bool isRoundLocked = Round.IsLocked;
             Round.IsLocked = true;
             SpawnOrder.Apply();

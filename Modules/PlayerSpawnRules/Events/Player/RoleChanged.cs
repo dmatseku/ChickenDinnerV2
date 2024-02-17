@@ -1,12 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ChickenDinnerV2.Core.Interfaces;
+using ChickenDinnerV2.Core;
+using Exiled.Events.EventArgs.Player;
 
 namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Events.Player
 {
-    internal class RoleChanged
+    internal class RoleChanged : IObserver
     {
+        protected static Config PlayerSpawnRulesConfig = Main.Instance.Config.PlayerSpawnRules;
+
+        public bool Register()
+        {
+            if (PlayerSpawnRulesConfig.IsEnabled)
+            {
+                Exiled.Events.Handlers.Player.Spawned += SetItems;
+                return true;
+            }
+            return false;
+        }
+
+        public void Unregister()
+        {
+            Exiled.Events.Handlers.Player.Spawned -= SetItems;
+        }
+
+        public void SetItems(SpawnedEventArgs ev)
+        {
+            Model.SetItems.SetItemsToRole(ev.Player, ev.Player.Role.Type);
+        }
     }
 }

@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Exiled.API.Features;
 using PlayerRoles;
 using System.Text.RegularExpressions;
@@ -18,24 +16,24 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
 
         private static List<int> getPlayerList(int count)
         {
-            List<int> result = new List<int>(count);
+            List<int> result = new List<int>();
 
             for (int i = 0; i < count; i++)
             {
-                result[i] = i;
+                result.Add(i);
             }
             return result;
         }
 
         private static RoleTypeId? GetRoleTypeId(string role, List<RoleTypeId> busyUniqRoles)
         {
-            List<string> roles = new Regex(@"\s,\s").Split(role).ToList();
+            List<string> roles = new Regex(@"\s*,\s*").Split(role).ToList();
             RoleTypeId result;
             
             while (roles.Count > 0)
             {
                 int RoleId = rand.Next(roles.Count);
-                
+
                 if (Enum.TryParse(roles[RoleId], out result))
                 {
                     if (!roles[RoleId].Contains("Scp") || !busyUniqRoles.Contains(result))
