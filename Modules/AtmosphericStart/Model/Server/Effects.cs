@@ -5,12 +5,33 @@ using PluginAPI.Core;
 using PluginAPI.Core.Zones;
 using System;
 using System.Collections.Generic;
+using Exiled.API.Features;
+using Log = Exiled.API.Features.Log;
+using MapGeneration;
+using PluginAPI.Core.Doors;
+using Exiled.API.Features.Doors;
 
 namespace ChickenDinnerV2.Modules.AtmosphericStart.Model.Server
 {
     internal static class Effects
     {
         private static Config AtmosphericStartConfig = Main.Instance.Config.AtmosphericStart;
+
+        private static List<RoomName> scpRooms = new List<RoomName>
+        {
+            MapGeneration.RoomName.Lcz173,
+            MapGeneration.RoomName.Hcz049,
+            MapGeneration.RoomName.Hcz096,
+            MapGeneration.RoomName.Hcz106,
+            MapGeneration.RoomName.Hcz939
+        };
+
+        private static List<string> scpGates = new List<string>
+        {
+            "173_CONNECTOR",
+            "173_GATE",
+            "173_BOTTOM"
+        };
 
         private static readonly List<Action<FacilityRoom>> effects = new List<Action<FacilityRoom>>
         {
@@ -23,9 +44,19 @@ namespace ChickenDinnerV2.Modules.AtmosphericStart.Model.Server
                     {
                         if (door.name.Contains("Prison"))
                         {
-                            door.ServerChangeLock(DoorLockReason.Regular079, true);
+                            door.ServerChangeLock(DoorLockReason.AdminCommand, true);
                         }
                         door.NetworkTargetState = true;
+                    }
+                }
+                if (scpRooms.Contains(room.Identifier.Name))
+                {
+                    Room exiledRoom = Room.Get(room.Identifier); 
+
+                    foreach (Door door in exiledRoom.Doors)
+                    {
+                        door.Lock(9999999, Exiled.API.Enums.DoorLockType.AdminCommand);
+                        door.IsOpen = false;
                     }
                 }
             },
@@ -40,6 +71,15 @@ namespace ChickenDinnerV2.Modules.AtmosphericStart.Model.Server
                     foreach (DoorVariant door in DoorVariant.DoorsByRoom[room.Identifier])
                     {
                         door.NetworkTargetState = false;
+                    }
+                }
+                if (scpRooms.Contains(room.Identifier.Name))
+                {
+                    Room exiledRoom = Room.Get(room.Identifier);
+
+                    foreach (Door door in exiledRoom.Doors)
+                    {
+                        door.Unlock();
                     }
                 }
             },
