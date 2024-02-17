@@ -134,6 +134,11 @@
     <Compile Include="Modules\DoorCracker\Model\Player\CrackingDoorsManager.cs" />
     <Compile Include="Modules\ForbidToOpenLockedDoors\Config.cs" />
     <Compile Include="Modules\ForbidToOpenLockedDoors\Plugins\Player\ForbidOpening.cs" />
+    <Compile Include="Modules\WeaponAdditions\Config.cs" />
+    <Compile Include="Modules\WeaponAdditions\Events\Player\Shot.cs" />
+    <Compile Include="Modules\WeaponAdditions\Model\ShootingEffect.cs" />
+    <Compile Include="Modules\WeaponAdditions\Model\ShootingEffectsManager.cs" />
+    <Compile Include="Modules\WeaponAdditions\Model\ShootingEffects\ShockEffect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

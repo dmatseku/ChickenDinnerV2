@@ -6,6 +6,7 @@ using DoNotTriggerTeslaConfig = ChickenDinnerV2.Modules.DoNotTriggerTesla.Config
 using ObserversCounterConfig = ChickenDinnerV2.Modules.ObserversCounter.Config;
 using DoorCrackerConfig = ChickenDinnerV2.Modules.DoorCracker.Config;
 using ForbidToOpenLockedDoorsConfig = ChickenDinnerV2.Modules.ForbidToOpenLockedDoors.Config;
+using WeaponAdditionsConfig = ChickenDinnerV2.Modules.WeaponAdditions.Config;
 
 namespace ChickenDinnerV2.Modules
 {
@@ -27,5 +28,7 @@ namespace ChickenDinnerV2.Modules
         public DoorCrackerConfig DoorCracker { get; set; } = new DoorCrackerConfig();
 
         public ForbidToOpenLockedDoorsConfig ForbidToOpenLockedDoors { get; set; } = new ForbidToOpenLockedDoorsConfig();
+
+        public WeaponAdditionsConfig WeaponAdditions { get; set; } = new WeaponAdditionsConfig();
     }
 }
