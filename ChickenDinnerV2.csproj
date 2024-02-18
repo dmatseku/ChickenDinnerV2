@@ -140,6 +140,8 @@
     <Compile Include="Modules\DoorCracker\Model\Player\CrackingDoorsManager.cs" />
     <Compile Include="Modules\ForbidToOpenLockedDoors\Config.cs" />
     <Compile Include="Modules\ForbidToOpenLockedDoors\Plugins\Player\ForbidOpening.cs" />
+    <Compile Include="Modules\InfiniteRadio\Config.cs" />
+    <Compile Include="Modules\InfiniteRadio\Plugins\Items\Radio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

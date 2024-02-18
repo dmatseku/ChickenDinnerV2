@@ -6,6 +6,7 @@ using DistanceModificationConfig = ChickenDinnerV2.Modules.DistanceModification.
 using DoNotTriggerTeslaConfig = ChickenDinnerV2.Modules.DoNotTriggerTesla.Config;
 using DoorCrackerConfig = ChickenDinnerV2.Modules.DoorCracker.Config;
 using ForbidToOpenLockedDoorsConfig = ChickenDinnerV2.Modules.ForbidToOpenLockedDoors.Config;
+using InfiniteRadioConfig = ChickenDinnerV2.Modules.InfiniteRadio.Config;
 
 namespace ChickenDinnerV2.Modules
 {
@@ -27,5 +28,7 @@ namespace ChickenDinnerV2.Modules
         public DoorCrackerConfig DoorCracker { get; set; } = new DoorCrackerConfig();
 
         public ForbidToOpenLockedDoorsConfig ForbidToOpenLockedDoors { get; set; } = new ForbidToOpenLockedDoorsConfig();
+        
+        public InfiniteRadioConfig InfiniteRadio {  get; set; } = new InfiniteRadioConfig();
     }
 }
