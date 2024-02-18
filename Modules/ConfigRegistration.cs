@@ -5,6 +5,7 @@ using PlayerSpawnRulesConfig = ChickenDinnerV2.Modules.PlayerSpawnRules.Config;
 using DistanceModificationConfig = ChickenDinnerV2.Modules.DistanceModification.Config;
 using DoNotTriggerTeslaConfig = ChickenDinnerV2.Modules.DoNotTriggerTesla.Config;
 using DoorCrackerConfig = ChickenDinnerV2.Modules.DoorCracker.Config;
+using ForbidToOpenLockedDoorsConfig = ChickenDinnerV2.Modules.ForbidToOpenLockedDoors.Config;
 
 namespace ChickenDinnerV2.Modules
 {
@@ -24,5 +25,7 @@ namespace ChickenDinnerV2.Modules
         public DoNotTriggerTeslaConfig DoNotTriggerTesla { get; set; } = new DoNotTriggerTeslaConfig();
 
         public DoorCrackerConfig DoorCracker { get; set; } = new DoorCrackerConfig();
+
+        public ForbidToOpenLockedDoorsConfig ForbidToOpenLockedDoors { get; set; } = new ForbidToOpenLockedDoorsConfig();
     }
 }
