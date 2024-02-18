@@ -131,6 +131,8 @@
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffects\ShockEffect.cs" />
     <Compile Include="Modules\DistanceModification\Config.cs" />
     <Compile Include="Modules\DistanceModification\Plugins\Scp173.cs" />
+    <Compile Include="Modules\DoNotTriggerTesla\Config.cs" />
+    <Compile Include="Modules\DoNotTriggerTesla\Events\Player\PreventTriggeringTesla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
