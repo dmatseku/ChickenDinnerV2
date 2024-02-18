@@ -129,6 +129,8 @@
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffect.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffectsManager.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffects\ShockEffect.cs" />
+    <Compile Include="Modules\DistanceModification\Config.cs" />
+    <Compile Include="Modules\DistanceModification\Plugins\Scp173.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
