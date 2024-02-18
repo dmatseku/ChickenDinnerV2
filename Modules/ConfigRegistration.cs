@@ -1,5 +1,8 @@
 ﻿using Exiled.API.Interfaces;
+
 using AtmosphericStartConfig = ChickenDinnerV2.Modules.AtmosphericStart.Config;
+
+using PlayerSpawnRulesConfig = ChickenDinnerV2.Modules.PlayerSpawnRules.Config;
 
 namespace ChickenDinnerV2.Modules
 {
@@ -9,5 +12,7 @@ namespace ChickenDinnerV2.Modules
         public bool Debug { get; set; } = false;
 
         public AtmosphericStartConfig AtmosphericStart { get; set; } = new AtmosphericStartConfig();
+
+        public PlayerSpawnRulesConfig PlayerSpawnRules {  get; set; } = new PlayerSpawnRulesConfig();
     }
 }

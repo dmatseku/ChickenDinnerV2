@@ -119,6 +119,11 @@
     <Compile Include="Modules\AtmosphericStart\Events\Server\RoundStarted.cs" />
     <Compile Include="Modules\AtmosphericStart\Model\Server\Effects.cs" />
     <Compile Include="Modules\ConfigRegistration.cs" />
+    <Compile Include="Modules\PlayerSpawnRules\Config.cs" />
+    <Compile Include="Modules\PlayerSpawnRules\Events\Player\RoleChanged.cs" />
+    <Compile Include="Modules\PlayerSpawnRules\Events\Server\RoundStarted.cs" />
+    <Compile Include="Modules\PlayerSpawnRules\Model\SpawnOrder.cs" />
+    <Compile Include="Modules\PlayerSpawnRules\Model\SetItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
