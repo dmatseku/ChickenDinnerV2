@@ -1,4 +1,5 @@
 ﻿using Exiled.API.Interfaces;
+using WeaponAdditionsConfig = ChickenDinnerV2.Modules.WeaponAdditions.Config;
 
 using AtmosphericStartConfig = ChickenDinnerV2.Modules.AtmosphericStart.Config;
 
@@ -14,5 +15,7 @@ namespace ChickenDinnerV2.Modules
         public AtmosphericStartConfig AtmosphericStart { get; set; } = new AtmosphericStartConfig();
 
         public PlayerSpawnRulesConfig PlayerSpawnRules {  get; set; } = new PlayerSpawnRulesConfig();
+
+        public WeaponAdditionsConfig WeaponAdditions { get; set; } = new WeaponAdditionsConfig();
     }
 }

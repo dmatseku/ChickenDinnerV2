@@ -124,6 +124,11 @@
     <Compile Include="Modules\PlayerSpawnRules\Events\Server\RoundStarted.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\SpawnOrder.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\SetItems.cs" />
+    <Compile Include="Modules\WeaponAdditions\Config.cs" />
+    <Compile Include="Modules\WeaponAdditions\Events\Player\Shot.cs" />
+    <Compile Include="Modules\WeaponAdditions\Model\ShootingEffect.cs" />
+    <Compile Include="Modules\WeaponAdditions\Model\ShootingEffectsManager.cs" />
+    <Compile Include="Modules\WeaponAdditions\Model\ShootingEffects\ShockEffect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
