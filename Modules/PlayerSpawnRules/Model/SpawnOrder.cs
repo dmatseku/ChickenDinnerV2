@@ -60,7 +60,8 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
 
             while (ids.Count > 0)
             {
-                int playerId = rand.Next(ids.Count);
+                int playerId = ids[rand.Next(ids.Count)];
+                Log.Warn("id: " + playerId.ToString() + "; ids count: " + ids.Count.ToString());
                 RoleTypeId? roleTypeId = GetRoleTypeId(PlayerSpawnRulesConfig.spawnOrder[SpawnOrderId], busyUniqRoles);
 
                 if (roleTypeId != null)
