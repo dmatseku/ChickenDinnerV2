@@ -142,6 +142,8 @@
     <Compile Include="Modules\ForbidToOpenLockedDoors\Plugins\Player\ForbidOpening.cs" />
     <Compile Include="Modules\InfiniteRadio\Config.cs" />
     <Compile Include="Modules\InfiniteRadio\Plugins\Items\Radio.cs" />
+    <Compile Include="Modules\ObserversCounter\Config.cs" />
+    <Compile Include="Modules\ObserversCounter\Plugins\Scp173\TeleportAbility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

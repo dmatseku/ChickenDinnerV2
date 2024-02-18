@@ -7,6 +7,7 @@ using DoNotTriggerTeslaConfig = ChickenDinnerV2.Modules.DoNotTriggerTesla.Config
 using DoorCrackerConfig = ChickenDinnerV2.Modules.DoorCracker.Config;
 using ForbidToOpenLockedDoorsConfig = ChickenDinnerV2.Modules.ForbidToOpenLockedDoors.Config;
 using InfiniteRadioConfig = ChickenDinnerV2.Modules.InfiniteRadio.Config;
+using ObserversCounterConfig = ChickenDinnerV2.Modules.ObserversCounter.Config;
 
 namespace ChickenDinnerV2.Modules
 {
@@ -30,5 +31,7 @@ namespace ChickenDinnerV2.Modules
         public ForbidToOpenLockedDoorsConfig ForbidToOpenLockedDoors { get; set; } = new ForbidToOpenLockedDoorsConfig();
         
         public InfiniteRadioConfig InfiniteRadio {  get; set; } = new InfiniteRadioConfig();
+
+        public ObserversCounterConfig ObserversCounter { get; set; } = new ObserversCounterConfig();
     }
 }
