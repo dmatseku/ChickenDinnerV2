@@ -4,6 +4,7 @@ using AtmosphericStartConfig = ChickenDinnerV2.Modules.AtmosphericStart.Config;
 using PlayerSpawnRulesConfig = ChickenDinnerV2.Modules.PlayerSpawnRules.Config;
 using DistanceModificationConfig = ChickenDinnerV2.Modules.DistanceModification.Config;
 using DoNotTriggerTeslaConfig = ChickenDinnerV2.Modules.DoNotTriggerTesla.Config;
+using DoorCrackerConfig = ChickenDinnerV2.Modules.DoorCracker.Config;
 
 namespace ChickenDinnerV2.Modules
 {
@@ -21,5 +22,7 @@ namespace ChickenDinnerV2.Modules
         public DistanceModificationConfig DistanceModification { get; set; } = new DistanceModificationConfig();
 
         public DoNotTriggerTeslaConfig DoNotTriggerTesla { get; set; } = new DoNotTriggerTeslaConfig();
+
+        public DoorCrackerConfig DoorCracker { get; set; } = new DoorCrackerConfig();
     }
 }
