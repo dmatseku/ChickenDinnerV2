@@ -112,9 +112,11 @@
     <Compile Include="Core\Interfaces\IInitialize.cs" />
     <Compile Include="Core\Interfaces\IModuleConfig.cs" />
     <Compile Include="Core\Interfaces\IObserver.cs" />
+    <Compile Include="Core\Interfaces\IPlayerData.cs" />
     <Compile Include="Core\Main.cs" />
     <Compile Include="Core\ObserverManager.cs" />
     <Compile Include="Core\Tools\ILBuilder.cs" />
+    <Compile Include="Core\Tools\PlayerDataBase.cs" />
     <Compile Include="Modules\ConfigRegistration.cs" />
     <Compile Include="Modules\WeaponAdditions\Config.cs" />
     <Compile Include="Modules\WeaponAdditions\Events\Player\Shot.cs" />
