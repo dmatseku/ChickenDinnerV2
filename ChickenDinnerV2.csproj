@@ -112,12 +112,14 @@
     <Compile Include="Core\Interfaces\IInitialize.cs" />
     <Compile Include="Core\Interfaces\IModuleConfig.cs" />
     <Compile Include="Core\Interfaces\IObserver.cs" />
+    <Compile Include="Core\Interfaces\IPlayerData.cs" />
     <Compile Include="Core\Main.cs" />
     <Compile Include="Core\ObserverManager.cs" />
     <Compile Include="Core\Tools\ILBuilder.cs" />
     <Compile Include="Modules\AtmosphericStart\Config.cs" />
     <Compile Include="Modules\AtmosphericStart\Events\Server\RoundStarted.cs" />
     <Compile Include="Modules\AtmosphericStart\Model\Server\Effects.cs" />
+    <Compile Include="Core\Tools\PlayerDataBase.cs" />
     <Compile Include="Modules\ConfigRegistration.cs" />
     <Compile Include="Modules\DistanceModification\Config.cs" />
     <Compile Include="Modules\DistanceModification\Plugins\Scp173.cs" />
