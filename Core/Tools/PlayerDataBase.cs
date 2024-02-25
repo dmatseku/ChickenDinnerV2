@@ -43,9 +43,10 @@ namespace ChickenDinnerV2.Core.Tools
             if (!PlayerDataBase.ContainsKey(typeof(T)))
             {
                 T result = default;
+                result.Owner = player;
 
                 PlayerDataBase.Add(typeof(T), result);
-                result.Created(player);
+                result.Created();
                 return result;
             }
             return (T)PlayerDataBase[typeof(T)];
