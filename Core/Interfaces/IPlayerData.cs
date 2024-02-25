@@ -9,6 +9,9 @@ namespace ChickenDinnerV2.Core.Interfaces
 {
     internal interface IPlayerData
     {
-        void Created(Player player);
+        Player Owner { get; set; }
+
+        void Created();
+        void RoleChanged();
     }
 }
