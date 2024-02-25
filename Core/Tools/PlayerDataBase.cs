@@ -1,10 +1,8 @@
 ﻿using ChickenDinnerV2.Core.Interfaces;
 using Exiled.API.Features;
+using Exiled.Events.EventArgs.Player;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChickenDinnerV2.Core.Tools
 {
@@ -21,6 +19,29 @@ namespace ChickenDinnerV2.Core.Tools
                 isInitialized = true;
 
                 dataBase = new Dictionary<int, Dictionary<Type, IPlayerData>>();
+                Exiled.Events.Handlers.Player.ChangingRole += OnChangingRole;
+            }
+        }
+
+        public static void Destroy()
+        {
+            if (isInitialized)
+            {
+                Exiled.Events.Handlers.Player.ChangingRole -= OnChangingRole;
+
+                isInitialized = false;
+            }
+        }
+
+        private static void OnChangingRole(ChangingRoleEventArgs ev)
+        {
+            Dictionary<Type, IPlayerData> PlayerGeneralBase = getPlayerDataBase(ev.Player.Id);
+
+            foreach (KeyValuePair<Type, IPlayerData> playerDataObject in PlayerGeneralBase)
+            {
+                IPlayerData playerData = playerDataObject.Value;
+
+                playerData.RoleChanged();
             }
         }
 
@@ -38,17 +59,22 @@ namespace ChickenDinnerV2.Core.Tools
 
         public static T Get<T>(Player player) where T : IPlayerData
         {
-            Dictionary<Type, IPlayerData> PlayerDataBase = getPlayerDataBase(player.Id);
+            Dictionary<Type, IPlayerData> PlayerGeneralBase = getPlayerDataBase(player.Id);
+            T result;
 
-            if (!PlayerDataBase.ContainsKey(typeof(T)))
+            if (!PlayerGeneralBase.ContainsKey(typeof(T)))
             {
-                T result = default;
+                result = default;
+                result.Owner = player;
 
-                PlayerDataBase.Add(typeof(T), result);
-                result.Created(player);
-                return result;
+                PlayerGeneralBase.Add(typeof(T), result);
+                result.Created();
             }
-            return (T)PlayerDataBase[typeof(T)];
+            else
+            {
+                result = (T)PlayerGeneralBase[typeof(T)];
+            }
+            return result;
         }
     }
 }

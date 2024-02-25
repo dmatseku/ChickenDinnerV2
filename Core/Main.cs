@@ -46,6 +46,7 @@ namespace ChickenDinnerV2.Core
 
         public override void OnDisabled()
         {
+            PlayerDataBase.Destroy();
             HarmonyInstance.UnpatchAll();
             ObserverManagerInstance.Unregister();
 
