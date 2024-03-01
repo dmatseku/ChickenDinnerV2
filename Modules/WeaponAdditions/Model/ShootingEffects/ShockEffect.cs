@@ -55,24 +55,24 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model.ShootingEffects
             weapon.Ammo = (byte)0;
             time = 0;
 
-            if (!isEnoughShots(shooter))
+            if (!isEnoughShots(target))
             {
                 return false;
             }
 
             CustomReasonDamageHandler damageHandler = new CustomReasonDamageHandler("Sleep");
-            if (shooter == null)
+            if (target == null)
                 return false;
 
-            data.Add((object)Ragdoll.CreateAndSpawn(shooter.Role.Type, shooter.Nickname, (DamageHandlerBase)damageHandler, shooter.Position, shooter.Rotation));
+            data.Add((object)Ragdoll.CreateAndSpawn(target.Role.Type, target.Nickname, (DamageHandlerBase)damageHandler, target.Position, target.Rotation));
 
-            shooter.DropItem(shooter.CurrentItem);
-            Timing.RunCoroutine(this.teleport(shooter));
+            target.DropItem(target.CurrentItem);
+            Timing.RunCoroutine(this.teleport(target));
 
-            shooter.EnableEffect(EffectType.AmnesiaItems, byte.MaxValue);
-            shooter.EnableEffect(EffectType.AmnesiaVision, byte.MaxValue);
-            shooter.EnableEffect(EffectType.Ensnared, byte.MaxValue);
-            shooter.EnableEffect(EffectType.Invisible, byte.MaxValue);
+            target.EnableEffect(EffectType.AmnesiaItems, byte.MaxValue);
+            target.EnableEffect(EffectType.AmnesiaVision, byte.MaxValue);
+            target.EnableEffect(EffectType.Ensnared, byte.MaxValue);
+            target.EnableEffect(EffectType.Invisible, byte.MaxValue);
 
             time = this.GetEffectTime();
             return true;

@@ -22,11 +22,11 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
         {
             if (Main.Instance.Config.WeaponAdditions.EffectsConfig["shock"].ContainsKey(roleShockHitConfig))
             {
-                ShockHitCount = Convert.ToInt32(Main.Instance.Config.WeaponAdditions.EffectsConfig["shock"][roleShockHitConfig]);
+                ShockHitCount = Convert.ToInt32(Main.Instance.Config.WeaponAdditions.EffectsConfig["shock"][roleShockHitConfig]) - 1;
             }
             else
             {
-                ShockHitCount = 1;
+                ShockHitCount = 0;
             }
         }
         public void Created()
