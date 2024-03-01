@@ -41,7 +41,7 @@ namespace ChickenDinnerV2.Core.Tools
             {
                 IPlayerData playerData = playerDataObject.Value;
 
-                playerData.RoleChanged();
+                playerData.RoleChanged(ev.NewRole);
             }
         }
 
