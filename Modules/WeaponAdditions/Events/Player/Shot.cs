@@ -25,7 +25,7 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Events.Player
 
         public void HandleShooting(ShotEventArgs e)
         {
-            ShootingEffectsManager.runEffect(e.Firearm, e.Player, e.Target);
+            ShootingEffectsManager.runEffect(e);
         }
     }
 }

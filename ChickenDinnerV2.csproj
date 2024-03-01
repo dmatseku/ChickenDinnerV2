@@ -128,6 +128,7 @@
     <Compile Include="Modules\PlayerSpawnRules\Model\SetItems.cs" />
     <Compile Include="Modules\WeaponAdditions\Config.cs" />
     <Compile Include="Modules\WeaponAdditions\Events\Player\Shot.cs" />
+    <Compile Include="Modules\WeaponAdditions\Model\PlayerEffectsDataObject.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffect.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffectsManager.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffects\ShockEffect.cs" />

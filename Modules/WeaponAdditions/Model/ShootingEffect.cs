@@ -1,5 +1,5 @@
 ﻿using Exiled.API.Features;
-using Exiled.API.Features.Items;
+using Exiled.Events.EventArgs.Player;
 using MEC;
 using System.Collections.Generic;
 
@@ -9,24 +9,24 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
     {
         protected List<Player> players;
 
-        protected abstract float ApplyPreEffect(Firearm weapon, Player shooter, Player target, List<object> data);
+        protected abstract bool ApplyPreEffect(ShotEventArgs ev, List<object> data, out float time);
 
-        protected abstract float ApplyEffect(Firearm weapon, Player shooter, Player target, List<object> data);
+        protected abstract bool ApplyEffect(ShotEventArgs ev, List<object> data, out float time);
 
-        protected abstract void ApplyPostEffect(Firearm weapon, Player shooter, Player target, List<object> data);
+        protected abstract void ApplyPostEffect(ShotEventArgs ev, List<object> data);
 
         protected abstract float GetEffectTime();
 
-        public void InitEffect(Firearm weapon, Player shooter, Player target)
+        public void InitEffect(ShotEventArgs ev)
         {
             lock (this.players)
             {
-                if (this.players.Contains(target))
+                if (this.players.Contains(ev.Target))
                 {
                     return;
                 }
-                this.players.Add(target);
-                Timing.RunCoroutine(this.ExecuteEffect(weapon, shooter, target));
+                this.players.Add(ev.Target);
+                Timing.RunCoroutine(this.ExecuteEffect(ev));
             }
         }
 
@@ -42,18 +42,29 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
             }
         }
 
-        public IEnumerator<float> ExecuteEffect(Firearm weapon, Player shooter, Player target)
+        public IEnumerator<float> ExecuteEffect(ShotEventArgs ev)
         {
             List<object> data = new List<object>();
-            float waitTime = this.ApplyPreEffect(weapon, shooter, target, data);
+            float waitTime;
+            bool needToExecuteEffect = this.ApplyPreEffect(ev, data, out waitTime);
+            bool needToExecuteAgain = needToExecuteEffect;
 
-            while (waitTime >= 1.0f)
+            if (!needToExecuteEffect)
+            {
+                yield return 0;
+            }
+
+            while (needToExecuteAgain)
             {
                 yield return Timing.WaitForSeconds(waitTime);
-                waitTime = this.ApplyEffect(weapon, shooter, target, data);
+                needToExecuteAgain = this.ApplyEffect(ev, data, out waitTime);
             }
-            this.ApplyPostEffect(weapon, shooter, target, data);
-            this.DestroyEffect(target);
+
+            if (needToExecuteEffect)
+            {
+                this.ApplyPostEffect(ev, data);
+            }
+            this.DestroyEffect(ev.Target);
         }
     }
 }
