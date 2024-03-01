@@ -14,18 +14,18 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Events.Player
         {
             if (!WeaponAdditionsConfig.IsEnabled)
                 return false;
-            Exiled.Events.Handlers.Player.Shooting += new CustomEventHandler<ShootingEventArgs>(this.HandleShooting);
+            Exiled.Events.Handlers.Player.Shot += new CustomEventHandler<ShotEventArgs>(this.HandleShooting);
             return true;
         }
 
         public void Unregister()
         {
-            Exiled.Events.Handlers.Player.Shooting -= new CustomEventHandler<ShootingEventArgs>(this.HandleShooting);
+            Exiled.Events.Handlers.Player.Shot -= new CustomEventHandler<ShotEventArgs>(this.HandleShooting);
         }
 
-        public void HandleShooting(ShootingEventArgs e)
+        public void HandleShooting(ShotEventArgs e)
         {
-            ShootingEffectsManager.runEffect(e.Firearm, e.Player, e.Player);
+            ShootingEffectsManager.runEffect(e.Firearm, e.Player, e.Target);
         }
     }
 }
