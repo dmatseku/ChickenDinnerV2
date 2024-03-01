@@ -1,7 +1,9 @@
 ﻿using Exiled.API.Features;
 using Exiled.API.Features.Items;
+using Exiled.Events.EventArgs.Player;
 using MEC;
 using System.Collections.Generic;
+using static UnityEngine.GraphicsBuffer;
 
 namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
 {
@@ -9,24 +11,24 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
     {
         protected List<Player> players;
 
-        protected abstract bool ApplyPreEffect(Firearm weapon, Player shooter, Player target, List<object> data, out float time);
+        protected abstract bool ApplyPreEffect(ShotEventArgs ev, List<object> data, out float time);
 
-        protected abstract bool ApplyEffect(Firearm weapon, Player shooter, Player target, List<object> data, out float time);
+        protected abstract bool ApplyEffect(ShotEventArgs ev, List<object> data, out float time);
 
-        protected abstract void ApplyPostEffect(Firearm weapon, Player shooter, Player target, List<object> data);
+        protected abstract void ApplyPostEffect(ShotEventArgs ev, List<object> data);
 
         protected abstract float GetEffectTime();
 
-        public void InitEffect(Firearm weapon, Player shooter, Player target)
+        public void InitEffect(ShotEventArgs ev)
         {
             lock (this.players)
             {
-                if (this.players.Contains(target))
+                if (this.players.Contains(ev.Target))
                 {
                     return;
                 }
-                this.players.Add(target);
-                Timing.RunCoroutine(this.ExecuteEffect(weapon, shooter, target));
+                this.players.Add(ev.Target);
+                Timing.RunCoroutine(this.ExecuteEffect(ev));
             }
         }
 
@@ -42,11 +44,11 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
             }
         }
 
-        public IEnumerator<float> ExecuteEffect(Firearm weapon, Player shooter, Player target)
+        public IEnumerator<float> ExecuteEffect(ShotEventArgs ev)
         {
             List<object> data = new List<object>();
             float waitTime;
-            bool needToExecuteEffect = this.ApplyPreEffect(weapon, shooter, target, data, out waitTime);
+            bool needToExecuteEffect = this.ApplyPreEffect(ev, data, out waitTime);
             bool needToExecuteAgain = needToExecuteEffect;
 
             if (!needToExecuteEffect)
@@ -57,14 +59,14 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
             while (needToExecuteAgain)
             {
                 yield return Timing.WaitForSeconds(waitTime);
-                needToExecuteAgain = this.ApplyEffect(weapon, shooter, target, data, out waitTime);
+                needToExecuteAgain = this.ApplyEffect(ev, data, out waitTime);
             }
 
             if (needToExecuteEffect)
             {
-                this.ApplyPostEffect(weapon, shooter, target, data);
+                this.ApplyPostEffect(ev, data);
             }
-            this.DestroyEffect(target);
+            this.DestroyEffect(ev.Target);
         }
     }
 }
