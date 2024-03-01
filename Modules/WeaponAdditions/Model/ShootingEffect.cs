@@ -1,9 +1,7 @@
 ﻿using Exiled.API.Features;
-using Exiled.API.Features.Items;
 using Exiled.Events.EventArgs.Player;
 using MEC;
 using System.Collections.Generic;
-using static UnityEngine.GraphicsBuffer;
 
 namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
 {

@@ -1,7 +1,5 @@
 ﻿using ChickenDinnerV2.Core;
 using ChickenDinnerV2.Modules.WeaponAdditions.Model.ShootingEffects;
-using Exiled.API.Features;
-using Exiled.API.Features.Items;
 using Exiled.Events.EventArgs.Player;
 using System.Collections.Generic;
 
