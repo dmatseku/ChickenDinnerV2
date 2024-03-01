@@ -24,7 +24,8 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions
                 {
                     { "effect_min_time", "5" },
                     { "effect_max_time", "10" },
-                    { "post_effects_time", "15" }
+                    { "post_effects_time", "15" },
+                    { "Scp939_hit_count", "5" }
                 }
             }
         };

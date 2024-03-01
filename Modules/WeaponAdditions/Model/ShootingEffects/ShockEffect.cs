@@ -1,4 +1,5 @@
 ﻿using ChickenDinnerV2.Core;
+using ChickenDinnerV2.Core.Tools;
 using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.API.Features.Items;
@@ -30,37 +31,63 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model.ShootingEffects
             target.Teleport(new Vector3(181.5f, 1004f, -28.7f));
         }
 
-        protected override float ApplyPreEffect(
-          Firearm weapon,
-          Player shooter,
-          Player target,
-          List<object> data)
+        private bool isEnoughShots(Player target)
         {
-            CustomReasonDamageHandler damageHandler = new CustomReasonDamageHandler("Sleep");
-            weapon.Ammo = (byte)0;
-            if (target == null)
-                return 0.0f;
+            PlayerEffectsDataObject playerDataObject = PlayerDataBase.Get<PlayerEffectsDataObject>(target);
 
-            data.Add((object)Ragdoll.CreateAndSpawn(target.Role.Type, target.Nickname, (DamageHandlerBase)damageHandler, target.Position, target.Rotation));
-
-            target.DropItem(target.CurrentItem);
-            Timing.RunCoroutine(this.teleport(target));
-
-            target.EnableEffect(EffectType.AmnesiaItems, byte.MaxValue);
-            target.EnableEffect(EffectType.AmnesiaVision, byte.MaxValue);
-            target.EnableEffect(EffectType.Ensnared, byte.MaxValue);
-            target.EnableEffect(EffectType.Invisible, byte.MaxValue);
-
-            return this.GetEffectTime();
+            if (playerDataObject.ShockCurrentHit < playerDataObject.ShockHitCount)
+            {
+                playerDataObject.ShockCurrentHit++;
+                return false;
+            }
+            playerDataObject.ShockCurrentHit = 0;
+            return true;
         }
 
-        protected override float ApplyEffect(
+        protected override bool ApplyPreEffect
+        (
           Firearm weapon,
           Player shooter,
           Player target,
-          List<object> data)
-        {
-            return 0.0f;
+          List<object> data,
+          out float time
+        ) {
+            weapon.Ammo = (byte)0;
+            time = 0;
+
+            if (!isEnoughShots(shooter))
+            {
+                return false;
+            }
+
+            CustomReasonDamageHandler damageHandler = new CustomReasonDamageHandler("Sleep");
+            if (shooter == null)
+                return false;
+
+            data.Add((object)Ragdoll.CreateAndSpawn(shooter.Role.Type, shooter.Nickname, (DamageHandlerBase)damageHandler, shooter.Position, shooter.Rotation));
+
+            shooter.DropItem(shooter.CurrentItem);
+            Timing.RunCoroutine(this.teleport(shooter));
+
+            shooter.EnableEffect(EffectType.AmnesiaItems, byte.MaxValue);
+            shooter.EnableEffect(EffectType.AmnesiaVision, byte.MaxValue);
+            shooter.EnableEffect(EffectType.Ensnared, byte.MaxValue);
+            shooter.EnableEffect(EffectType.Invisible, byte.MaxValue);
+
+            time = this.GetEffectTime();
+            return true;
+        }
+
+        protected override bool ApplyEffect
+        (
+          Firearm weapon,
+          Player shooter,
+          Player target,
+          List<object> data,
+          out float time
+        ) {
+            time = 0;
+            return false;
         }
 
         protected override void ApplyPostEffect(
@@ -69,21 +96,21 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model.ShootingEffects
           Player target,
           List<object> data)
         {
-            if (target == null)
+            if (shooter == null)
                 return;
 
-            target.DisableEffect(EffectType.AmnesiaItems);
-            target.DisableEffect(EffectType.AmnesiaVision);
-            target.DisableEffect(EffectType.Ensnared);
-            target.DisableEffect(EffectType.Invisible);
+            shooter.DisableEffect(EffectType.AmnesiaItems);
+            shooter.DisableEffect(EffectType.AmnesiaVision);
+            shooter.DisableEffect(EffectType.Ensnared);
+            shooter.DisableEffect(EffectType.Invisible);
 
             Ragdoll ragdoll = (Ragdoll)data[0];
-            target.Position = new Vector3(ragdoll.Position.x, ragdoll.Position.y, ragdoll.Position.z);
+            shooter.Position = new Vector3(ragdoll.Position.x, ragdoll.Position.y, ragdoll.Position.z);
             ragdoll.Destroy();
 
-            target.EnableEffect(EffectType.Deafened, byte.MaxValue, float.Parse(WeaponAdditionsConfig.EffectsConfig["shock"]["post_effects_time"]));
-            target.EnableEffect(EffectType.Concussed, byte.MaxValue, float.Parse(WeaponAdditionsConfig.EffectsConfig["shock"]["post_effects_time"]));
-            target.EnableEffect(EffectType.Disabled, byte.MaxValue, float.Parse(WeaponAdditionsConfig.EffectsConfig["shock"]["post_effects_time"]));
+            shooter.EnableEffect(EffectType.Deafened, byte.MaxValue, float.Parse(WeaponAdditionsConfig.EffectsConfig["shock"]["post_effects_time"]));
+            shooter.EnableEffect(EffectType.Concussed, byte.MaxValue, float.Parse(WeaponAdditionsConfig.EffectsConfig["shock"]["post_effects_time"]));
+            shooter.EnableEffect(EffectType.Disabled, byte.MaxValue, float.Parse(WeaponAdditionsConfig.EffectsConfig["shock"]["post_effects_time"]));
         }
 
         protected override float GetEffectTime()
