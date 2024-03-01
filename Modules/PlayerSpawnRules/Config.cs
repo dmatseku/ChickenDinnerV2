@@ -16,22 +16,44 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules
             "Scp096, Scp173, Scp106, Scp049, Scp079, Scp939, Scp3114"
         };
 
-        [Description("Roles order on round start. several variants separated by coma")]
-        public Dictionary<string, Dictionary<string, Dictionary<string, int>>> RoleItems { get; set; } = new Dictionary<string, Dictionary<string, Dictionary<string, int>>>()
+        [Description("Roles order on round start. several variants separated by coma. Key - item name, value - chance")]
+        public Dictionary<string, List<List<Dictionary<string, string>>>> RoleItems { get; set; } = new Dictionary<string, List<List<Dictionary<string, string>>>>
         {
             {
-                "Scientist", new Dictionary<string, Dictionary<string, int>>
+                "Scientist", new List<List<Dictionary<string, string>>>
                 {
                     {
-                        "Scientist", new Dictionary<string, int>
+                        new List<Dictionary<string, string>>
                         {
-                            { "KeycardScientist", 1 }
+                            new Dictionary<string, string>
+                            {
+                                { "Item", "KeycardScientist" },
+                                { "Count", "1" },
+                                { "Chance", "100" }
+                            },
+                            new Dictionary<string, string>
+                            {
+                                { "Item", "GunCOM15" },
+                                { "Count", "1" },
+                                { "Chance", "50" }
+                            }
                         }
                     },
                     {
-                        "ZoneManager", new Dictionary<string, int>
+                        new List<Dictionary<string, string>>
                         {
-                            { "KeycardZoneManager", 1 }
+                            new Dictionary<string, string>
+                            {
+                                { "Item", "KeycardZoneManager" },
+                                { "Count", "1" },
+                                { "Chance", "100" }
+                            },
+                            new Dictionary<string, string>
+                            {
+                                { "Item", "GunCOM17" },
+                                { "Count", "1" },
+                                { "Chance", "50" }
+                            }
                         }
                     }
                 }

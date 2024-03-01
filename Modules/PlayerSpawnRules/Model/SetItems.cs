@@ -13,11 +13,11 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
 
         private static Random rand = new Random(Guid.NewGuid().GetHashCode());
 
-        private static KeyValuePair<string, Dictionary<string, int>>? getRoleItemsList(string role)
+        private static List<Dictionary<string, string>> getRoleItemsList(string role)
         {
             if (PlayerSpawnRulesConfig.RoleItems.ContainsKey(role))
             {
-                Dictionary<string, Dictionary<string, int>> customRoles = PlayerSpawnRulesConfig.RoleItems[role];
+                List<List<Dictionary<string, string>>> customRoles = PlayerSpawnRulesConfig.RoleItems[role];
                 int customRoleIndex = rand.Next(customRoles.Count);
 
                 return customRoles.ElementAt(customRoleIndex);
@@ -28,21 +28,31 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
 
         public static void SetItemsToRole(Player player, RoleTypeId newRole)
         {
-            KeyValuePair<string, Dictionary<string, int>>? itemsList = getRoleItemsList(newRole.ToString());
+            List<Dictionary<string, string>> itemsList = getRoleItemsList(newRole.ToString());
 
             if (itemsList != null)
             {
                 player.ClearInventory();
-                player.RoleManager.name = ((KeyValuePair<string, Dictionary<string, int>>)itemsList).Key;
-                Dictionary<string, int> list = ((KeyValuePair<string, Dictionary<string, int>>)itemsList).Value;
 
-                foreach (KeyValuePair<string, int> itemRow in list)
+                foreach (Dictionary<string, string> itemRow in itemsList)
                 {
                     ItemType item;
+                    int count;
+                    int chance;
 
-                    if (Enum.TryParse(itemRow.Key, out item))
+                    if (itemRow.ContainsKey("Item") && Enum.TryParse(itemRow["Item"], out item) &&
+                        itemRow.ContainsKey("Count") && int.TryParse(itemRow["Count"], out count) &&
+                        itemRow.ContainsKey("Chance") && int.TryParse(itemRow["Chance"], out chance))
                     {
-                        player.AddItem(item, itemRow.Value);
+                        if (chance > 100)
+                        {
+                            chance = 100;
+                        }
+
+                        if (chance >= rand.Next(101))
+                        {
+                            player.AddItem(item, count);
+                        }
                     }
                 }
             }
