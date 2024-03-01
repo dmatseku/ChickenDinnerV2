@@ -50,7 +50,7 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model.ShootingEffects
             Player target = ev.Target;
 
             ev.Firearm.Ammo = 0;
-            ev.Damage = 0;
+            ev.Damage = 1;
             time = 0;
 
             if (!isEnoughShots(target))
@@ -95,7 +95,7 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model.ShootingEffects
             target.DisableEffect(EffectType.Invisible);
 
             Ragdoll ragdoll = (Ragdoll)data[0];
-            target.Position = new Vector3(ragdoll.Position.x, ragdoll.Room.Position.y, ragdoll.Position.z);
+            target.Position = new Vector3(ragdoll.Position.x, ragdoll.Position.y + 1f, ragdoll.Position.z);
             ragdoll.Destroy();
 
             target.EnableEffect(EffectType.Deafened, byte.MaxValue, float.Parse(WeaponAdditionsConfig.EffectsConfig["shock"]["post_effects_time"]));
