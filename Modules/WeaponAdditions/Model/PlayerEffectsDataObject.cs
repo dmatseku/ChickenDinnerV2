@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ChickenDinnerV2.Core;
 using ChickenDinnerV2.Core.Interfaces;
 using Exiled.API.Features;
+using PlayerRoles;
 
 namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
 {
@@ -34,10 +31,10 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
             UpdateShockHitCount(Owner.Role.Type.ToString() + "_hit_count");
         }
 
-        public void RoleChanged()
+        public void RoleChanged(RoleTypeId newRole)
         {
             ShockCurrentHit = 0;
-            UpdateShockHitCount(Owner.Role.Type.ToString() + "_hit_count");
+            UpdateShockHitCount(newRole.ToString() + "_hit_count");
         }
     }
 }
