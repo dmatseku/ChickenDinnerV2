@@ -64,7 +64,7 @@ namespace ChickenDinnerV2.Core.Tools
 
             if (!PlayerGeneralBase.ContainsKey(typeof(T)))
             {
-                result = default;
+                result = (T)Activator.CreateInstance(typeof(T));
                 result.Owner = player;
 
                 PlayerGeneralBase.Add(typeof(T), result);
