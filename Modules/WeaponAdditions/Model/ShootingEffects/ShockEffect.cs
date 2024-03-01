@@ -3,6 +3,7 @@ using ChickenDinnerV2.Core.Tools;
 using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.API.Features.Items;
+using Exiled.Events.EventArgs.Player;
 using MEC;
 using PlayerStatsSystem;
 using System.Collections.Generic;
@@ -44,15 +45,12 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model.ShootingEffects
             return true;
         }
 
-        protected override bool ApplyPreEffect
-        (
-          Firearm weapon,
-          Player shooter,
-          Player target,
-          List<object> data,
-          out float time
-        ) {
-            weapon.Ammo = (byte)0;
+        protected override bool ApplyPreEffect(ShotEventArgs ev, List<object> data, out float time)
+        {
+            Player target = ev.Target;
+
+            ev.Firearm.Ammo = 0;
+            ev.Damage = 0;
             time = 0;
 
             if (!isEnoughShots(target))
@@ -78,24 +76,16 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model.ShootingEffects
             return true;
         }
 
-        protected override bool ApplyEffect
-        (
-          Firearm weapon,
-          Player shooter,
-          Player target,
-          List<object> data,
-          out float time
-        ) {
+        protected override bool ApplyEffect(ShotEventArgs ev, List<object> data, out float time)
+        {
             time = 0;
             return false;
         }
 
-        protected override void ApplyPostEffect(
-          Firearm weapon,
-          Player shooter,
-          Player target,
-          List<object> data)
+        protected override void ApplyPostEffect(ShotEventArgs ev, List<object> data)
         {
+            Player target = ev.Target;
+
             if (target == null)
                 return;
 
@@ -105,7 +95,7 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model.ShootingEffects
             target.DisableEffect(EffectType.Invisible);
 
             Ragdoll ragdoll = (Ragdoll)data[0];
-            target.Position = new Vector3(ragdoll.Position.x, ragdoll.Position.y, ragdoll.Position.z);
+            target.Position = new Vector3(ragdoll.Position.x, ragdoll.Room.Position.y, ragdoll.Position.z);
             ragdoll.Destroy();
 
             target.EnableEffect(EffectType.Deafened, byte.MaxValue, float.Parse(WeaponAdditionsConfig.EffectsConfig["shock"]["post_effects_time"]));

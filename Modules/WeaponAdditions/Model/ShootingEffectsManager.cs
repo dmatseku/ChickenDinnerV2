@@ -2,6 +2,7 @@
 using ChickenDinnerV2.Modules.WeaponAdditions.Model.ShootingEffects;
 using Exiled.API.Features;
 using Exiled.API.Features.Items;
+using Exiled.Events.EventArgs.Player;
 using System.Collections.Generic;
 
 namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
@@ -15,15 +16,15 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
             { "shock", ShockEffect.GetEffect() }
         };
 
-        public static void runEffect(Firearm weapon, Player shooter, Player target)
+        public static void runEffect(ShotEventArgs ev)
         {
             string key;
             ShootingEffect shootingEffect;
 
-            if (!ShootingEffectsManager.WeaponAdditionsConfig.WeaponEffects.TryGetValue(weapon.Type.ToString(), out key) || !ShootingEffectsManager.shootingEffects.TryGetValue(key, out shootingEffect))
+            if (!WeaponAdditionsConfig.WeaponEffects.TryGetValue(ev.Firearm.Type.ToString(), out key) || !shootingEffects.TryGetValue(key, out shootingEffect))
                 return;
 
-            shootingEffect.InitEffect(weapon, shooter, target);
+            shootingEffect.InitEffect(ev);
         }
     }
 }
