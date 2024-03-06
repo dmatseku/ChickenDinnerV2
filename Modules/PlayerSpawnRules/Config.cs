@@ -16,6 +16,16 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules
             "Scp096, Scp173, Scp106, Scp049, Scp079, Scp939, Scp3114"
         };
 
+        public Dictionary<string, Dictionary<string, string>> RoleConfig { get; set; } = new Dictionary<string, Dictionary<string, string>>
+        {
+            {
+                "Scp939", new Dictionary<string, string>
+                {
+                    { "HP", "100000" }
+                }
+            }
+        };
+
         [Description("Roles order on round start. several variants separated by coma. Key - item name, value - chance")]
         public Dictionary<string, List<List<Dictionary<string, string>>>> RoleItems { get; set; } = new Dictionary<string, List<List<Dictionary<string, string>>>>
         {

@@ -124,6 +124,8 @@
     <Compile Include="Modules\PlayerSpawnRules\Config.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Events\Player\RoleChanged.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Events\Server\RoundStarted.cs" />
+    <Compile Include="Modules\PlayerSpawnRules\Model\RoleGeneralConfig.cs" />
+    <Compile Include="Modules\PlayerSpawnRules\Model\RoleItemsConfig.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\SpawnOrder.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\SetItems.cs" />
     <Compile Include="Modules\WeaponAdditions\Config.cs" />
@@ -147,6 +149,7 @@
     <Compile Include="Modules\InfiniteRadio\Plugins\Items\Radio.cs" />
     <Compile Include="Modules\ObserversCounter\Config.cs" />
     <Compile Include="Modules\ObserversCounter\Plugins\Scp173\TeleportAbility.cs" />
+    <Compile Include="Modules\PlayerSpawnRules\Model\RoleHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
 {
-    internal static class SetItems
+    internal static class RoleItemsConfig
     {
         private static Config PlayerSpawnRulesConfig = Main.Instance.Config.PlayerSpawnRules;
 
@@ -15,14 +15,14 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
 
         private static List<Dictionary<string, string>> getRoleItemsList(string role)
         {
-            if (PlayerSpawnRulesConfig.RoleItems.ContainsKey(role))
+            List<List<Dictionary<string, string>>> customRoles;
+
+            if (PlayerSpawnRulesConfig.RoleItems.TryGetValue(role, out customRoles))
             {
-                List<List<Dictionary<string, string>>> customRoles = PlayerSpawnRulesConfig.RoleItems[role];
                 int customRoleIndex = rand.Next(customRoles.Count);
 
                 return customRoles.ElementAt(customRoleIndex);
             }
-
             return null;
         }
 
@@ -38,18 +38,18 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
                 {
                     ItemType item;
                     int count;
-                    int chance;
+                    float chance;
 
                     if (itemRow.ContainsKey("Item") && Enum.TryParse(itemRow["Item"], out item) &&
                         itemRow.ContainsKey("Count") && int.TryParse(itemRow["Count"], out count) &&
-                        itemRow.ContainsKey("Chance") && int.TryParse(itemRow["Chance"], out chance))
+                        itemRow.ContainsKey("Chance") && float.TryParse(itemRow["Chance"], out chance))
                     {
                         if (chance > 100)
                         {
                             chance = 100;
                         }
 
-                        if (chance >= rand.Next(101))
+                        if ((chance - 1) / 100 >= rand.NextDouble())
                         {
                             player.AddItem(item, count);
                         }
