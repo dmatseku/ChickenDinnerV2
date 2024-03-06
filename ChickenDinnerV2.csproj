@@ -127,7 +127,6 @@
     <Compile Include="Modules\PlayerSpawnRules\Model\RoleGeneralConfig.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\RoleItemsConfig.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\SpawnOrder.cs" />
-    <Compile Include="Modules\PlayerSpawnRules\Model\SetItems.cs" />
     <Compile Include="Modules\WeaponAdditions\Config.cs" />
     <Compile Include="Modules\WeaponAdditions\Events\Player\Shot.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\PlayerEffectsDataObject.cs" />
