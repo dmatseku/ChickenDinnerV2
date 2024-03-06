@@ -25,7 +25,7 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Events.Player
 
         public void SetItems(SpawnedEventArgs ev)
         {
-            Model.SetItems.SetItemsToRole(ev.Player, ev.Player.Role.Type);
+            Model.RoleHandler.HandleNewRole(ev.Player, ev.Player.Role.Type);
         }
     }
 }
