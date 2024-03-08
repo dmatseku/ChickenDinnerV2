@@ -1,4 +1,5 @@
 ﻿using Exiled.API.Interfaces;
+using ScpVoiceConfig = ChickenDinnerV2.Modules.ScpVoice.Config;
 
 namespace ChickenDinnerV2.Modules
 {
@@ -6,5 +7,7 @@ namespace ChickenDinnerV2.Modules
     {
         public bool IsEnabled { get; set; } = true;
         public bool Debug { get; set; } = false;
+
+        public ScpVoiceConfig ScpVoice {  get; set; } = new ScpVoiceConfig();
     }
 }
