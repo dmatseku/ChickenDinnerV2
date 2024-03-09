@@ -5,6 +5,7 @@ using HarmonyLib;
 using System.Linq;
 using ChickenDinnerV2.Core.Interfaces;
 using ChickenDinnerV2.Modules;
+using ChickenDinnerV2.Core.Tools;
 
 namespace ChickenDinnerV2.Core
 {
@@ -35,22 +36,24 @@ namespace ChickenDinnerV2.Core
             HarmonyInstance = new Harmony(harmonyId);
             ObserverManagerInstance = new ObserverManager();
 
-            Initialize();
+            PluginsInitialize();
             ObserverManagerInstance.Register();
             HarmonyInstance.PatchAll();
+            PlayerDataBase.Init();
 
             base.OnEnabled();
         }
 
         public override void OnDisabled()
         {
+            PlayerDataBase.Destroy();
             HarmonyInstance.UnpatchAll();
             ObserverManagerInstance.Unregister();
 
             base.OnDisabled();
         }
 
-        private void Initialize()
+        private void PluginsInitialize()
         {
             var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
