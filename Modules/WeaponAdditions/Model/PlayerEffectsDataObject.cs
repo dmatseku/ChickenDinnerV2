@@ -31,10 +31,14 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
             UpdateShockHitCount(Owner.Role.Type.ToString() + "_hit_count");
         }
 
-        public void RoleChanged(RoleTypeId newRole)
+        public void RoleChange(RoleTypeId newRole)
         {
             ShockCurrentHit = 0;
             UpdateShockHitCount(newRole.ToString() + "_hit_count");
+        }
+
+        public void Spawned()
+        {
         }
     }
 }
