@@ -1,4 +1,5 @@
 ﻿using Exiled.API.Features;
+using Exiled.API.Features.Roles;
 using PlayerRoles;
 
 namespace ChickenDinnerV2.Core.Interfaces
@@ -8,6 +9,7 @@ namespace ChickenDinnerV2.Core.Interfaces
         Player Owner { get; set; }
 
         void Created();
-        void RoleChanged(RoleTypeId newRole);
+        void RoleChange(RoleTypeId newRole);
+        void Spawned();
     }
 }
