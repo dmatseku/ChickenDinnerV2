@@ -121,6 +121,7 @@
     <Compile Include="Modules\ScpVoice\Config.cs" />
     <Compile Include="Modules\ScpVoice\Events\ApplyVoiceOnSpawned.cs" />
     <Compile Include="Modules\ScpVoice\Model\ScpProximityVoiceModule.cs" />
+    <Compile Include="Modules\ScpVoice\Plugins\Player\StandardScpVoiceModulePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

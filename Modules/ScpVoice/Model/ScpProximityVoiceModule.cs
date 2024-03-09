@@ -1,11 +1,7 @@
 ﻿using PlayerRoles.PlayableScps;
-using PlayerRoles.PlayableScps.Scp3114;
-using PlayerRoles;
-using System;
 using UnityEngine;
 using VoiceChat;
 using VoiceChat.Playbacks;
-using PlayerRoles.PlayableScps.Scp106;
 
 namespace ChickenDinnerV2.Modules.ScpVoice.Model
 {
