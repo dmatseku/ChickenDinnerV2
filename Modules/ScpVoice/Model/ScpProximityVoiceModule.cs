@@ -33,10 +33,5 @@ namespace ChickenDinnerV2.Modules.ScpVoice.Model
         {
             return (channel != VoiceChatChannel.Proximity || !this.IsProximity ? (channel == this.PrimaryChannel ? 1 : 0) : 1) == 0 ? VoiceChatChannel.None : channel;
         }
-
-        public override void ResetObject()
-        {
-            base.ResetObject();
-        }
     }
 }
