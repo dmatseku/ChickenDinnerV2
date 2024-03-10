@@ -133,8 +133,6 @@
     <Compile Include="Modules\DoorCracker\Events\Player\InteractingDoor.cs" />
     <Compile Include="Modules\DoorCracker\Events\Player\InterruptEvents.cs" />
     <Compile Include="Modules\DoorCracker\Events\Server\RestartingRound.cs" />
-    <Compile Include="Modules\DoorCracker\Model\Player\CrackingDoor.cs" />
-    <Compile Include="Modules\DoorCracker\Model\Player\CrackingDoorsManager.cs" />
     <Compile Include="Modules\ForbidToOpenLockedDoors\Config.cs" />
     <Compile Include="Modules\ForbidToOpenLockedDoors\Plugins\Player\ForbidOpening.cs" />
     <Compile Include="Modules\WeaponAdditions\Config.cs" />
