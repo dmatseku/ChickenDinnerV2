@@ -38,7 +38,6 @@ namespace ChickenDinnerV2.Modules.DoorCracker.Model
         {
             if (!DoorCrackingConditions.CheckPlayerPostion(doorCracker.player, doorCracker.door))
             {
-                Log.Warn("hello");
                 doorCracker.Interrupt();
             }
         }
