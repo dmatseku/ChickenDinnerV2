@@ -129,10 +129,10 @@
     <Compile Include="Modules\PlayerSpawnRules\Model\RoleItemsConfig.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\SpawnOrder.cs" />
     <Compile Include="Modules\WeaponAdditions\Config.cs" />
+    <Compile Include="Modules\WeaponAdditions\Events\Player\Shooting.cs" />
     <Compile Include="Modules\WeaponAdditions\Events\Player\Shot.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\PlayerEffectsDataObject.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffect.cs" />
-    <Compile Include="Modules\WeaponAdditions\Model\ShootingEffectsManager.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffects\ShockEffect.cs" />
     <Compile Include="Modules\DistanceModification\Config.cs" />
     <Compile Include="Modules\DistanceModification\Plugins\Scp173.cs" />
@@ -154,6 +154,9 @@
     <Compile Include="Modules\DoorCracker\Model\DoorCracker.cs" />
     <Compile Include="Modules\DoorCracker\Model\DoorCrackingConditions.cs" />
     <Compile Include="Modules\DoorCracker\Model\DoorCrackingManager.cs" />
+    <Compile Include="Modules\WeaponAdditions\Model\ShotEffect.cs" />
+    <Compile Include="Modules\WeaponAdditions\Model\ShootingEffectsManager.cs" />
+    <Compile Include="Modules\WeaponAdditions\Model\ShotEffects\ShockEffect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
