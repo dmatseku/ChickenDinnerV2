@@ -26,7 +26,7 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Events.Server
 
         public void ApplyTeamConfig(RespawningTeamEventArgs ev)
         {
-
+            TeamGeneralConfig.ApplyConfig(ev);
         }
     }
 }

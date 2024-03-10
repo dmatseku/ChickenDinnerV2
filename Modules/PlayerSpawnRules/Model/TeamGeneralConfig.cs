@@ -13,6 +13,18 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
     {
         private static Config PlayerSpawnRulesConfig = Main.Instance.Config.PlayerSpawnRules;
 
+        private static void setMaximumAmount(RespawningTeamEventArgs ev, int maxSize)
+        {
+            Random random = new Random();
+
+            while (ev.Players.Count > maxSize)
+            {
+                ev.Players.RemoveAt(random.Next(ev.Players.Count));
+            }
+
+            ev.MaximumRespawnAmount = maxSize;
+        }
+
         public static void ApplyConfig(RespawningTeamEventArgs ev)
         {
             Dictionary<string, string> config;
@@ -23,7 +35,7 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
 
                 if (int.TryParse(config["max_team_size"], out teamSize))
                 {
-                    ev.MaximumRespawnAmount = teamSize;
+                    setMaximumAmount(ev, teamSize);
                 }
             }
         }
