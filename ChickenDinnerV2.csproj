@@ -143,6 +143,7 @@
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffects\ShockEffect.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Config.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Events\Player\RoleChanged.cs" />
+    <Compile Include="Modules\PlayerSpawnRules\Events\Server\RespawningTeam.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Events\Server\RoundStarted.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\RoleGeneralConfig.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\RoleItemsConfig.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Modules\WeaponAdditions\Model\ShotEffect.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffectsManager.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\ShotEffects\ShockEffect.cs" />
+    <Compile Include="Modules\PlayerSpawnRules\Model\TeamGeneralConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -26,6 +26,22 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules
             }
         };
 
+        public Dictionary<string, Dictionary<string, string>> TeamConfig { get; set; } = new Dictionary<string, Dictionary<string, string>>
+        {
+            {
+                "NineTailedFox", new Dictionary<string, string>
+                {
+                    { "max_team_size", "1" }
+                }
+            },
+            {
+                "ChaosInsurgency", new Dictionary<string, string>
+                {
+                    { "max_team_size", "1" }
+                }
+            }
+        };
+
         [Description("Roles order on round start. several variants separated by coma. Key - item name, value - chance")]
         public Dictionary<string, List<List<Dictionary<string, string>>>> RoleItems { get; set; } = new Dictionary<string, List<List<Dictionary<string, string>>>>
         {
