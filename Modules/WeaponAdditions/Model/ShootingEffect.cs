@@ -5,44 +5,22 @@ using System.Collections.Generic;
 
 namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
 {
-    public abstract class ShootingEffect
+    internal abstract class ShootingEffect
     {
-        protected List<Player> players;
+        protected abstract bool ApplyPreEffect(ShootingEventArgs ev, List<object> data, out float time);
 
-        protected abstract bool ApplyPreEffect(ShotEventArgs ev, List<object> data, out float time);
+        protected abstract bool ApplyEffect(ShootingEventArgs ev, List<object> data, out float time);
 
-        protected abstract bool ApplyEffect(ShotEventArgs ev, List<object> data, out float time);
-
-        protected abstract void ApplyPostEffect(ShotEventArgs ev, List<object> data);
+        protected abstract void ApplyPostEffect(ShootingEventArgs ev, List<object> data);
 
         protected abstract float GetEffectTime();
 
-        public void InitEffect(ShotEventArgs ev)
+        public void InitEffect(ShootingEventArgs ev)
         {
-            lock (this.players)
-            {
-                if (this.players.Contains(ev.Target))
-                {
-                    return;
-                }
-                this.players.Add(ev.Target);
-                Timing.RunCoroutine(this.ExecuteEffect(ev));
-            }
+            Timing.RunCoroutine(this.ExecuteEffect(ev));
         }
 
-        protected void DestroyEffect(Player player)
-        {
-            lock (this.players)
-            {
-                if (!this.players.Contains(player))
-                {
-                    return;
-                }
-                this.players.Remove(player);
-            }
-        }
-
-        public IEnumerator<float> ExecuteEffect(ShotEventArgs ev)
+        public IEnumerator<float> ExecuteEffect(ShootingEventArgs ev)
         {
             List<object> data = new List<object>();
             float waitTime;
@@ -64,7 +42,6 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model
             {
                 this.ApplyPostEffect(ev, data);
             }
-            this.DestroyEffect(ev.Target);
         }
     }
 }
