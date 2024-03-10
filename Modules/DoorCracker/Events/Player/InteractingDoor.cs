@@ -1,7 +1,8 @@
 ﻿using ChickenDinnerV2.Core.Interfaces;
 using Exiled.Events.EventArgs.Player;
 using PlayerRoles.FirstPersonControl;
-using ChickenDinnerV2.Modules.DoorCracker.Model.Player;
+using ChickenDinnerV2.Modules.DoorCracker.Model;
+using Exiled.API.Features;
 
 namespace ChickenDinnerV2.Modules.DoorCracker.Events.Player
 {
@@ -23,19 +24,14 @@ namespace ChickenDinnerV2.Modules.DoorCracker.Events.Player
             Exiled.Events.Handlers.Player.InteractingDoor -= RegisterCrack;
         }
 
-
-
         public void RegisterCrack(InteractingDoorEventArgs ev)
         {
-            if (CrackingDoor.CheckPrivilegedPlayer(ev.Player))
+            if (DoorCrackingConditions.CheckPrivilegedPlayer(ev.Player) || ev.Player.Role.Base is IFpcRole currentRole && currentRole.FpcModule.CurrentMovementState == PlayerMovementState.Sneaking)
             {
-                CrackingDoorsManager.Instance().RegisterDoor(ev.Player, ev.Door);
-                ev.IsAllowed = false;
-            }
-            else if (ev.Player.ReferenceHub.roleManager.CurrentRole is IFpcRole currentRole && currentRole.FpcModule.CurrentMovementState == PlayerMovementState.Sneaking)
-            {
-                CrackingDoorsManager.Instance().RegisterDoor(ev.Player, ev.Door);
-                ev.IsAllowed = false;
+                if (DoorCrackingManager.RegisterDoor(ev.Door, ev.Player))
+                {
+                    ev.IsAllowed = false;
+                }
             }
         }
     }
