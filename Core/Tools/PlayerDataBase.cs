@@ -20,6 +20,7 @@ namespace ChickenDinnerV2.Core.Tools
 
                 dataBase = new Dictionary<int, Dictionary<Type, IPlayerData>>();
                 Exiled.Events.Handlers.Player.ChangingRole += OnChangingRole;
+                Exiled.Events.Handlers.Player.Spawned += OnSpawned;
             }
         }
 
@@ -28,6 +29,7 @@ namespace ChickenDinnerV2.Core.Tools
             if (isInitialized)
             {
                 Exiled.Events.Handlers.Player.ChangingRole -= OnChangingRole;
+                Exiled.Events.Handlers.Player.Spawned -= OnSpawned;
 
                 isInitialized = false;
             }
@@ -41,7 +43,19 @@ namespace ChickenDinnerV2.Core.Tools
             {
                 IPlayerData playerData = playerDataObject.Value;
 
-                playerData.RoleChanged(ev.NewRole);
+                playerData.RoleChange(ev.NewRole);
+            }
+        }
+
+        private static void OnSpawned(SpawnedEventArgs ev)
+        {
+            Dictionary<Type, IPlayerData> PlayerGeneralBase = getPlayerDataBase(ev.Player.Id);
+
+            foreach (KeyValuePair<Type, IPlayerData> playerDataObject in PlayerGeneralBase)
+            {
+                IPlayerData playerData = playerDataObject.Value;
+
+                playerData.Spawned();
             }
         }
 
