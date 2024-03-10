@@ -1,5 +1,4 @@
-﻿using ChickenDinnerV2.Modules.DoorCracker.Model.Player;
-
+﻿
 namespace ChickenDinnerV2.Modules.DoorCracker.Events.Server
 {
     internal class RestartingRound
@@ -23,7 +22,7 @@ namespace ChickenDinnerV2.Modules.DoorCracker.Events.Server
 
         public void ClearCracks()
         {
-            CrackingDoorsManager.Instance().Clear();
+            ChickenDinnerV2.Modules.DoorCracker.Model.DoorCracker.Clear();
         }
     }
 }

@@ -131,6 +131,7 @@
     <Compile Include="Modules\ObserversCounter\Plugins\Scp173\TeleportAbility.cs" />
     <Compile Include="Modules\DoorCracker\Config.cs" />
     <Compile Include="Modules\DoorCracker\Events\Player\InteractingDoor.cs" />
+    <Compile Include="Modules\DoorCracker\Events\Player\InterruptEvents.cs" />
     <Compile Include="Modules\DoorCracker\Events\Server\RestartingRound.cs" />
     <Compile Include="Modules\DoorCracker\Model\Player\CrackingDoor.cs" />
     <Compile Include="Modules\DoorCracker\Model\Player\CrackingDoorsManager.cs" />
@@ -149,6 +150,10 @@
     <Compile Include="Modules\PlayerSpawnRules\Model\RoleItemsConfig.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\SpawnOrder.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\RoleHandler.cs" />
+    <Compile Include="Modules\DoorCracker\Initialization.cs" />
+    <Compile Include="Modules\DoorCracker\Model\DoorCracker.cs" />
+    <Compile Include="Modules\DoorCracker\Model\DoorCrackingConditions.cs" />
+    <Compile Include="Modules\DoorCracker\Model\DoorCrackingManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
