@@ -10,21 +10,12 @@ namespace ChickenDinnerV2.Modules.DoorCracker.Model
 {
     internal static class DoorCrackingConditions
     {
+        private static Config DoorCrackerConfig = ChickenDinnerV2.Core.Main.Instance.Config.DoorCracker;
+
         private static readonly List<RoleTypeId> privilegedRoles = new List<RoleTypeId>
         {
             RoleTypeId.Tutorial,
             RoleTypeId.Overwatch
-        };
-
-        private static readonly Dictionary<RoleTypeId, ItemType> allowedRolesAndCards = new Dictionary<RoleTypeId, ItemType>
-        {
-            { RoleTypeId.NtfCaptain, ItemType.KeycardContainmentEngineer },
-            { RoleTypeId.NtfSpecialist, ItemType.KeycardContainmentEngineer },
-            { RoleTypeId.NtfPrivate, ItemType.KeycardContainmentEngineer },
-            { RoleTypeId.ChaosConscript, ItemType.KeycardChaosInsurgency },
-            { RoleTypeId.ChaosMarauder, ItemType.KeycardChaosInsurgency },
-            { RoleTypeId.ChaosRepressor, ItemType.KeycardChaosInsurgency },
-            { RoleTypeId.ChaosRifleman, ItemType.KeycardChaosInsurgency }
         };
 
         private static readonly Dictionary<DoorType, RoomType> doorExceptions = new Dictionary<DoorType, RoomType>
@@ -48,7 +39,7 @@ namespace ChickenDinnerV2.Modules.DoorCracker.Model
 
         public static bool CheckAllowedPlayer(ExiledPlayer player)
         {
-            return allowedRolesAndCards.ContainsKey(player.Role.Type) && player.CurrentItem != null && allowedRolesAndCards[player.Role.Type] == player.CurrentItem.Type;
+            return player.CurrentItem != null && DoorCrackerConfig.AllowedRolesAndCards.ContainsKey(player.Role.Type) && DoorCrackerConfig.AllowedRolesAndCards[player.Role.Type] == player.CurrentItem.Type;
         }
 
         public static bool CheckPlayerPostion(ExiledPlayer player, Door door)
