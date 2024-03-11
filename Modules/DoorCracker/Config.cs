@@ -1,4 +1,6 @@
 ﻿using ChickenDinnerV2.Core.Interfaces;
+using PlayerRoles;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace ChickenDinnerV2.Modules.DoorCracker
@@ -19,5 +21,12 @@ namespace ChickenDinnerV2.Modules.DoorCracker
 
         [Description("Keycard gate crack duration")]
         public int KeycardGate { get; set; } = 35;
+
+        public Dictionary<RoleTypeId, ItemType> AllowedRolesAndCards { get; set; } = new Dictionary<RoleTypeId, ItemType>
+        {
+            { RoleTypeId.NtfCaptain, ItemType.KeycardContainmentEngineer },
+            { RoleTypeId.ChaosMarauder, ItemType.KeycardChaosInsurgency },
+            { RoleTypeId.ChaosRepressor, ItemType.KeycardChaosInsurgency }
+        };
     }
 }
