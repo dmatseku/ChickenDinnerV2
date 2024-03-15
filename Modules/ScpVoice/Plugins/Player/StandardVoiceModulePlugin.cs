@@ -1,5 +1,6 @@
 ﻿using ChickenDinnerV2.Core.Tools;
 using ChickenDinnerV2.Modules.ScpVoice.Model;
+using Exiled.API.Features;
 using HarmonyLib;
 using PlayerRoles.PlayableScps;
 using PlayerRoles.Voice;
@@ -13,12 +14,12 @@ using VoiceChat;
 
 namespace ChickenDinnerV2.Modules.ScpVoice.Plugins.Player
 {
-    [HarmonyPatch(typeof(StandardScpVoiceModule))]
-    internal class StandardScpVoiceModulePlugin
+    [HarmonyPatch(typeof(StandardVoiceModule))]
+    internal class StandardVoiceModulePlugin
     {
         protected static Config ScpVoiceConfig = ChickenDinnerV2.Core.Main.Instance.Config.ScpVoice;
 
-        protected static ScpVoicePlayerData GetPlayerData(StandardScpVoiceModule __instance, bool isValidateSendPrefix = false)
+        protected static ScpVoicePlayerData GetPlayerData(StandardVoiceModule __instance, bool isValidateSendPrefix = false)
         {
             ReferenceHub owner = (ReferenceHub)typeof(VoiceModuleBase).GetField("_owner", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(__instance);
 
@@ -37,23 +38,29 @@ namespace ChickenDinnerV2.Modules.ScpVoice.Plugins.Player
             return PlayerDataBase.Get<ScpVoicePlayerData>(player);
         }
 
-        /*[HarmonyPrefix]
-        [HarmonyPatch("PrimaryChannel", MethodType.Getter)]
-        public static bool PrimaryChannelPrefix(StandardScpVoiceModule __instance, ref VoiceChatChannel __result)
+        [HarmonyPrefix]
+        [HarmonyPatch("ProcessSamples")]
+        public static bool ProcessSamplesPrefix(StandardVoiceModule __instance, float[] data, int len)
         {
-            ScpVoicePlayerData data = GetPlayerData(__instance);
-            if (data == null)
+            Log.Warn("hello1");
+            ScpVoicePlayerData playerData = GetPlayerData(__instance);
+            if (playerData == null)
             {
+                Log.Warn("hello2");
                 return true;
             }
 
-            if (data.IsProximity)
+            Log.Warn("hello3");
+            if (__instance.CurrentChannel == VoiceChatChannel.Proximity || playerData.IsProximity)
             {
-                __result = VoiceChatChannel.Proximity;
+                Log.Warn("hello4");
+                typeof(VoiceModuleBase).GetMethod("ProcessSamples", BindingFlags.Instance | BindingFlags.NonPublic, Type.DefaultBinder, new[] { typeof(float[]), typeof(int) }, null).Invoke(__instance, new object[] { data, len });
+                playerData._proximityPlayback.Buffer.Write(data, len);
 
                 return false;
             }
+
             return true;
-        }*/
+        }
     }
 }

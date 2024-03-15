@@ -7,6 +7,8 @@ using System.Reflection;
 using ChickenDinnerV2.Modules.ScpVoice.Model;
 using Exiled.API.Features;
 using ChickenDinnerV2.Core.Tools;
+using System.Runtime.Remoting.Messaging;
+using UnityEngine;
 
 namespace ChickenDinnerV2.Modules.ScpVoice.Events
 {
@@ -31,12 +33,12 @@ namespace ChickenDinnerV2.Modules.ScpVoice.Events
 
         public void changeVoice(TogglingNoClipEventArgs ev)
         {
-            if (!ev.IsAllowed)
+            if (!ev.IsAllowed && ev.Player.VoiceModule is StandardScpVoiceModule)
             {
                 ScpVoicePlayerData player = PlayerDataBase.Get<ScpVoicePlayerData>(ev.Player);
 
                 player.IsProximity = !player.IsProximity;
-                Log.Warn("Switched");
+                ev.Player.ShowHint("<color=yellow>switched voice to " + (player.IsProximity ? "proximity" : "scpchat") + "</color>", 3f);
             }
         }
     }

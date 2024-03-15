@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using VoiceChat.Playbacks;
 
 namespace ChickenDinnerV2.Modules.ScpVoice.Model
@@ -14,6 +15,7 @@ namespace ChickenDinnerV2.Modules.ScpVoice.Model
     {
         public Player Owner { get; set; }
 
+        [field: SerializeField]
         public SingleBufferPlayback _proximityPlayback { get; set; } = new SingleBufferPlayback();
 
         public bool IsProximity { get; set; } = false;

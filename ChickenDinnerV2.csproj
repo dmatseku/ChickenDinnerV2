@@ -95,6 +95,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Steam\steamapps\common\SCP Secret Laboratory Dedicated Server\SCPSL_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Steam\steamapps\common\SCP Secret Laboratory Dedicated Server\SCPSL_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
@@ -120,9 +124,14 @@
     <Compile Include="Modules\ConfigRegistration.cs" />
     <Compile Include="Modules\ScpVoice\Config.cs" />
     <Compile Include="Modules\ScpVoice\Events\SwitchVoice.cs" />
+    <Compile Include="Modules\ScpVoice\Initializer.cs" />
     <Compile Include="Modules\ScpVoice\Model\ScpProximityVoiceModule.cs" />
     <Compile Include="Modules\ScpVoice\Model\ScpVoicePlayerData.cs" />
+    <Compile Include="Modules\ScpVoice\Plugins\Player\GlobalVoiceModulePlugin.cs" />
+    <Compile Include="Modules\ScpVoice\Plugins\Player\SingleBufferPlaybackPlugin.cs" />
     <Compile Include="Modules\ScpVoice\Plugins\Player\StandardScpVoiceModulePlugin.cs" />
+    <Compile Include="Modules\ScpVoice\Plugins\Player\StandardVoiceModulePlugin.cs" />
+    <Compile Include="Modules\ScpVoice\Plugins\Player\VoiceModuleBasePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

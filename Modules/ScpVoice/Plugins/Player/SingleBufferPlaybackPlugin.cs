@@ -9,16 +9,16 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using VoiceChat;
+using VoiceChat.Playbacks;
 
 namespace ChickenDinnerV2.Modules.ScpVoice.Plugins.Player
 {
-    [HarmonyPatch(typeof(StandardScpVoiceModule))]
-    internal class StandardScpVoiceModulePlugin
+    [HarmonyPatch(typeof(SingleBufferPlayback))]
+    internal class SingleBufferPlaybackPlugin
     {
         protected static Config ScpVoiceConfig = ChickenDinnerV2.Core.Main.Instance.Config.ScpVoice;
 
-        protected static ScpVoicePlayerData GetPlayerData(StandardScpVoiceModule __instance, bool isValidateSendPrefix = false)
+        protected static ScpVoicePlayerData GetPlayerData(GlobalVoiceModuleBase __instance, bool isValidateSendPrefix = false)
         {
             ReferenceHub owner = (ReferenceHub)typeof(VoiceModuleBase).GetField("_owner", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(__instance);
 
@@ -36,24 +36,5 @@ namespace ChickenDinnerV2.Modules.ScpVoice.Plugins.Player
 
             return PlayerDataBase.Get<ScpVoicePlayerData>(player);
         }
-
-        /*[HarmonyPrefix]
-        [HarmonyPatch("PrimaryChannel", MethodType.Getter)]
-        public static bool PrimaryChannelPrefix(StandardScpVoiceModule __instance, ref VoiceChatChannel __result)
-        {
-            ScpVoicePlayerData data = GetPlayerData(__instance);
-            if (data == null)
-            {
-                return true;
-            }
-
-            if (data.IsProximity)
-            {
-                __result = VoiceChatChannel.Proximity;
-
-                return false;
-            }
-            return true;
-        }*/
     }
 }
