@@ -54,7 +54,7 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
                         {
                             player.AddItem(item, count);
                         }
-                        else
+                        else if (player.Role.Team == Team.ChaosInsurgency || player.Role.Team == Team.FoundationForces)
                         {
                             Log.Warn("~~~~~~~~~~~~~~");
                             Log.Warn("Role: " + newRole.ToString());
