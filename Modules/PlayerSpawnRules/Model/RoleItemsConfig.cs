@@ -38,20 +38,31 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
                 {
                     ItemType item;
                     int count;
-                    float chance;
+                    double chance;
 
                     if (itemRow.ContainsKey("Item") && Enum.TryParse(itemRow["Item"], out item) &&
                         itemRow.ContainsKey("Count") && int.TryParse(itemRow["Count"], out count) &&
-                        itemRow.ContainsKey("Chance") && float.TryParse(itemRow["Chance"], out chance))
+                        itemRow.ContainsKey("Chance") && double.TryParse(itemRow["Chance"], out chance))
                     {
                         if (chance > 100)
                         {
-                            chance = 100;
+                            chance = 100.0d;
                         }
-
-                        if ((chance - 1) / 100 >= rand.NextDouble())
+                        double dchance = rand.NextDouble();
+                        double preparedChance = (chance - 1) / 100.0d;
+                        if (preparedChance >= dchance)
                         {
                             player.AddItem(item, count);
+                        }
+                        else
+                        {
+                            Log.Warn("~~~~~~~~~~~~~~");
+                            Log.Warn("Role: " + newRole.ToString());
+                            Log.Warn("Item: " + item.ToString());
+                            Log.Warn("Chance: " + chance.ToString());
+                            Log.Warn("Prepared chance: " + preparedChance.ToString());
+                            Log.Warn("Result chance: " + dchance.ToString());
+                            Log.Warn("Result: " + (preparedChance >= dchance).ToString());
                         }
                     }
                 }
