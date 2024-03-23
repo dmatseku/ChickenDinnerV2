@@ -19,7 +19,8 @@ namespace ChickenDinnerV2.Modules.WeaponAdditions.Model.ShootingEffects
 
         protected override bool ApplyPreEffect(ShootingEventArgs ev, List<object> data, out float time)
         {
-            ev.Firearm.Ammo = 0;
+            if (ev.Firearm.Ammo > 1)
+                ev.Firearm.Ammo = 1;
             time = 0f;
             return false;
         }
