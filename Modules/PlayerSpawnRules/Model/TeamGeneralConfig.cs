@@ -15,7 +15,7 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
 
         private static void setMaximumAmount(RespawningTeamEventArgs ev, int maxSize)
         {
-            Random random = new Random();
+            Random random = new Random(Guid.NewGuid().GetHashCode());
 
             while (ev.Players.Count > maxSize)
             {
