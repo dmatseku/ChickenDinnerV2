@@ -49,8 +49,8 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
                             chance = 100.0d;
                         }
                         double dchance = rand.NextDouble();
-                        double preparedChance = (chance - 1) / 100.0d;
-                        if (preparedChance >= dchance)
+                        double preparedChance = chance / 100.0d;
+                        if (preparedChance > dchance)
                         {
                             player.AddItem(item, count);
                         }
@@ -62,7 +62,7 @@ namespace ChickenDinnerV2.Modules.PlayerSpawnRules.Model
                             Log.Warn("Chance: " + chance.ToString());
                             Log.Warn("Prepared chance: " + preparedChance.ToString());
                             Log.Warn("Result chance: " + dchance.ToString());
-                            Log.Warn("Result: " + (preparedChance >= dchance).ToString());
+                            Log.Warn("Result: " + (preparedChance > dchance).ToString());
                         }
                     }
                 }
