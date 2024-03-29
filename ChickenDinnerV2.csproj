@@ -122,16 +122,12 @@
     <Compile Include="Core\Tools\ILBuilder.cs" />
     <Compile Include="Core\Tools\PlayerDataBase.cs" />
     <Compile Include="Modules\ConfigRegistration.cs" />
+    <Compile Include="Modules\ScpVoice\Event\ChangingRole.cs" />
+    <Compile Include="Modules\ScpVoice\Event\TogglingNoClip.cs" />
+    <Compile Include="Modules\ScpVoice\Event\VoiceChatting.cs" />
+    <Compile Include="Modules\ScpVoice\Model\ScpVoice.cs" />
     <Compile Include="Modules\ScpVoice\Config.cs" />
-    <Compile Include="Modules\ScpVoice\Events\SwitchVoice.cs" />
-    <Compile Include="Modules\ScpVoice\Initializer.cs" />
-    <Compile Include="Modules\ScpVoice\Model\ScpProximityVoiceModule.cs" />
     <Compile Include="Modules\ScpVoice\Model\ScpVoicePlayerData.cs" />
-    <Compile Include="Modules\ScpVoice\Plugins\Player\GlobalVoiceModulePlugin.cs" />
-    <Compile Include="Modules\ScpVoice\Plugins\Player\SingleBufferPlaybackPlugin.cs" />
-    <Compile Include="Modules\ScpVoice\Plugins\Player\StandardScpVoiceModulePlugin.cs" />
-    <Compile Include="Modules\ScpVoice\Plugins\Player\StandardVoiceModulePlugin.cs" />
-    <Compile Include="Modules\ScpVoice\Plugins\Player\VoiceModuleBasePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

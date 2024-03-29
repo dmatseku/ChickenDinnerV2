@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
-using VoiceChat.Playbacks;
 
 namespace ChickenDinnerV2.Modules.ScpVoice.Model
 {
@@ -15,20 +13,11 @@ namespace ChickenDinnerV2.Modules.ScpVoice.Model
     {
         public Player Owner { get; set; }
 
-        [field: SerializeField]
-        public SingleBufferPlayback _proximityPlayback { get; set; } = new SingleBufferPlayback();
-
         public bool IsProximity { get; set; } = false;
-
-        protected void ClearValues()
-        {
-            _proximityPlayback = new SingleBufferPlayback();
-            IsProximity = false;
-        }
 
         public void Created()
         {
-            ClearValues();
+            IsProximity = false;
         }
 
         public void RoleChange(RoleTypeId newRole)
@@ -37,10 +26,7 @@ namespace ChickenDinnerV2.Modules.ScpVoice.Model
 
         public void Spawned()
         {
-            if (Owner.Role.Team == Team.SCPs)
-            {
-                ClearValues();
-            }
+            IsProximity = false;
         }
     }
 }
