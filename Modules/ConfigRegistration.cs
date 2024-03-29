@@ -8,6 +8,7 @@ using DoorCrackerConfig = ChickenDinnerV2.Modules.DoorCracker.Config;
 using ForbidToOpenLockedDoorsConfig = ChickenDinnerV2.Modules.ForbidToOpenLockedDoors.Config;
 using WeaponAdditionsConfig = ChickenDinnerV2.Modules.WeaponAdditions.Config;
 using PlayerSpawnRulesConfig = ChickenDinnerV2.Modules.PlayerSpawnRules.Config;
+using ScpVoiceConfig = ChickenDinnerV2.Modules.ScpVoice.Config;
 
 namespace ChickenDinnerV2.Modules
 {
@@ -33,5 +34,7 @@ namespace ChickenDinnerV2.Modules
         public WeaponAdditionsConfig WeaponAdditions { get; set; } = new WeaponAdditionsConfig();
 
         public PlayerSpawnRulesConfig PlayerSpawnRules {  get; set; } = new PlayerSpawnRulesConfig();
+
+        public ScpVoiceConfig ScpVoice {  get; set; } = new ScpVoiceConfig();
     }
 }

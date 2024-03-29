@@ -95,6 +95,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Steam\steamapps\common\SCP Secret Laboratory Dedicated Server\SCPSL_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Steam\steamapps\common\SCP Secret Laboratory Dedicated Server\SCPSL_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
@@ -157,6 +161,12 @@
     <Compile Include="Modules\WeaponAdditions\Model\ShootingEffectsManager.cs" />
     <Compile Include="Modules\WeaponAdditions\Model\ShotEffects\ShockEffect.cs" />
     <Compile Include="Modules\PlayerSpawnRules\Model\TeamGeneralConfig.cs" />
+    <Compile Include="Modules\ScpVoice\Event\ChangingRole.cs" />
+    <Compile Include="Modules\ScpVoice\Event\TogglingNoClip.cs" />
+    <Compile Include="Modules\ScpVoice\Event\VoiceChatting.cs" />
+    <Compile Include="Modules\ScpVoice\Model\ScpVoice.cs" />
+    <Compile Include="Modules\ScpVoice\Config.cs" />
+    <Compile Include="Modules\ScpVoice\Model\ScpVoicePlayerData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
