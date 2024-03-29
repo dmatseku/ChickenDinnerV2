@@ -8,6 +8,7 @@ using DoorCrackerConfig = ChickenDinnerV2.Modules.DoorCracker.Config;
 using ForbidToOpenLockedDoorsConfig = ChickenDinnerV2.Modules.ForbidToOpenLockedDoors.Config;
 using InfiniteRadioConfig = ChickenDinnerV2.Modules.InfiniteRadio.Config;
 using ObserversCounterConfig = ChickenDinnerV2.Modules.ObserversCounter.Config;
+using ScpVoiceConfig = ChickenDinnerV2.Modules.ScpVoice.Config;
 
 namespace ChickenDinnerV2.Modules
 {
@@ -33,5 +34,7 @@ namespace ChickenDinnerV2.Modules
         public InfiniteRadioConfig InfiniteRadio {  get; set; } = new InfiniteRadioConfig();
 
         public ObserversCounterConfig ObserversCounter { get; set; } = new ObserversCounterConfig();
+
+        public ScpVoiceConfig ScpVoice {  get; set; } = new ScpVoiceConfig();
     }
 }
