@@ -128,6 +128,7 @@
     <Compile Include="Modules\DistanceModification\Config.cs" />
     <Compile Include="Modules\DistanceModification\Plugins\Scp173.cs" />
     <Compile Include="Modules\InfiniteRadio\Config.cs" />
+    <Compile Include="Modules\InfiniteRadio\Model\RadioRangesConfig.cs" />
     <Compile Include="Modules\InfiniteRadio\Plugins\Items\Radio.cs" />
     <Compile Include="Modules\DoNotTriggerTesla\Config.cs" />
     <Compile Include="Modules\DoNotTriggerTesla\Events\Player\PreventTriggeringTesla.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Modules\ScpVoice\Model\ScpVoice.cs" />
     <Compile Include="Modules\ScpVoice\Config.cs" />
     <Compile Include="Modules\ScpVoice\Model\ScpVoicePlayerData.cs" />
+    <Compile Include="Modules\InfiniteRadio\Plugins\Items\RadioPickup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
