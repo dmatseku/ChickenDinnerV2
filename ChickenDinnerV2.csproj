@@ -149,6 +149,7 @@
     <Compile Include="Modules\ForbidToOpenLockedDoors\Config.cs" />
     <Compile Include="Modules\ForbidToOpenLockedDoors\Plugins\Player\ForbidOpening.cs" />
     <Compile Include="Modules\InfiniteRadio\Config.cs" />
+    <Compile Include="Modules\InfiniteRadio\Model\RadioRangesConfig.cs" />
     <Compile Include="Modules\InfiniteRadio\Plugins\Items\Radio.cs" />
     <Compile Include="Modules\ObserversCounter\Config.cs" />
     <Compile Include="Modules\ObserversCounter\Plugins\Scp173\TeleportAbility.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Modules\ScpVoice\Model\ScpVoice.cs" />
     <Compile Include="Modules\ScpVoice\Config.cs" />
     <Compile Include="Modules\ScpVoice\Model\ScpVoicePlayerData.cs" />
+    <Compile Include="Modules\InfiniteRadio\Plugins\Items\RadioPickup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
