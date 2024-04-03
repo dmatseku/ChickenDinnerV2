@@ -13,34 +13,38 @@ namespace ChickenDinnerV2.Modules.InfiniteRadio
         public float Modificator { get; set; } = 1.0f;
 
         [Description("Default: 1: (0.5, 40); 2: (1.2, 60); 3: (2.5, 120); 4: (13.5, 240)")]
-        public Dictionary<string, Dictionary<string, string>> RadioLevels { get; set; } = new Dictionary<string, Dictionary<string, string>>
+        public Dictionary<string, Dictionary<string, float>> RadioLevels { get; set; } = new Dictionary<string, Dictionary<string, float>>
         {
             {
-                "Level1", new Dictionary<string, string>
+                "Level1", new Dictionary<string, float>
                 {
-                    { "MinuteCostWhenTalking", "40" },
-                    { "MinuteCostWhenIdle", "0.5" }
+                    { "MaximumRange", 85 },
+                    { "MinuteCostWhenTalking", 40 },
+                    { "MinuteCostWhenIdle", 0.5f }
                 }
             },
             {
-                "Level2", new Dictionary<string, string>
+                "Level2", new Dictionary<string, float>
                 {
-                    { "MinuteCostWhenTalking", "60" },
-                    { "MinuteCostWhenIdle", "1.2" }
+                    { "MaximumRange", 175 },
+                    { "MinuteCostWhenTalking", 60 },
+                    { "MinuteCostWhenIdle", 1.2f }
                 }
             },
             {
-                "Level3", new Dictionary<string, string>
+                "Level3", new Dictionary<string, float>
                 {
-                    { "MinuteCostWhenTalking", "120" },
-                    { "MinuteCostWhenIdle", "2.5" }
+                    { "MaximumRange", 1500 },
+                    { "MinuteCostWhenTalking", 120 },
+                    { "MinuteCostWhenIdle", 2.5f }
                 }
             },
             {
-                "Level4", new Dictionary<string, string>
+                "Level4", new Dictionary<string, float>
                 {
-                    { "MinuteCostWhenTalking", "240" },
-                    { "MinuteCostWhenIdle", "13.5" }
+                    { "MaximumRange", 10000 },
+                    { "MinuteCostWhenTalking", 240 },
+                    { "MinuteCostWhenIdle", 13.5f }
                 }
             }
         };

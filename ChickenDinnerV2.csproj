@@ -119,7 +119,9 @@
     <Compile Include="Core\Tools\PlayerDataBase.cs" />
     <Compile Include="Modules\ConfigRegistration.cs" />
     <Compile Include="Modules\InfiniteRadio\Config.cs" />
+    <Compile Include="Modules\InfiniteRadio\Model\RadioRangesConfig.cs" />
     <Compile Include="Modules\InfiniteRadio\Plugins\Items\Radio.cs" />
+    <Compile Include="Modules\InfiniteRadio\Plugins\Items\RadioPickup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
