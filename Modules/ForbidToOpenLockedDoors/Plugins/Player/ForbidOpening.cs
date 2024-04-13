@@ -35,9 +35,9 @@ namespace ChickenDinnerV2.Modules.ForbidToOpenLockedDoors.Plugins.Player
                 CodeInstruction[] result;
 
                 result = new ILBuilder(newInstructions, generator)
-                    .Copy(count: 39)
+                    .Copy(count: 36)
                     .Call(typeof(ForbidOpening), nameof(ForbidOpening.Is079), new Type[] { typeof(ReferenceHub) })
-                    .Copy(from: 41)
+                    .Copy(from: 38)
                     .GetResult();
                 foreach (CodeInstruction instruction in result)
                 {
