@@ -33,11 +33,12 @@ namespace ChickenDinnerV2.Modules.ForbidToOpenLockedDoors.Plugins.Player
             {
                 List<CodeInstruction> newInstructions = ListPool<CodeInstruction>.Shared.Rent(instructions);
                 CodeInstruction[] result;
+                int offset = newInstructions.FindIndex(element => element.operand != null && element.operand.ToString().Contains("get_active"));
 
                 result = new ILBuilder(newInstructions, generator)
-                    .Copy(count: 39)
+                    .Copy(count: 30 + offset)
                     .Call(typeof(ForbidOpening), nameof(ForbidOpening.Is079), new Type[] { typeof(ReferenceHub) })
-                    .Copy(from: 41)
+                    .Copy(from: 32 + offset)
                     .GetResult();
                 foreach (CodeInstruction instruction in result)
                 {
